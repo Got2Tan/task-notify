@@ -184,100 +184,43 @@ obj = {
         {
           "is_short": False,
           "text": {
-            "content": "<at id=all></at>",
+            "content": "** INFO:**\n{} is merged into main branch.".format(PR_NAME),
             "tag": "lark_md"
           }
         },
         {
           "is_short": False,
           "text": {
-            "content": "**📝 Command:**\n{}".format(' '.join(cmd)),
+            "content": "** PR Link:**\n{}".format(PR_LINK),
             "tag": "lark_md"
           }
         },
         {
           "is_short": False,
           "text": {
-            "content": "",
-            "tag": "lark_md"
-          }
-        },
-        {
-          "is_short": True,
-          "text": {
-            "content": "**🕐 Start time:**\n{}".format(ts('start')),
-            "tag": "lark_md"
-          }
-        },
-        {
-          "is_short": True,
-          "text": {
-            "content": "**🕐 End time:**\n{}".format(ts('end')),
+            "content": "** Repo Name:**\n{}".format(REPO_NAME),
             "tag": "lark_md"
           }
         },
         {
           "is_short": False,
           "text": {
-            "content": "",
+            "content": "** Commit Log:**\n{}".format(COMMIT_LOG),
             "tag": "lark_md"
           }
         },
         {
-          "is_short": True,
+          "is_short": False,
           "text": {
-          "content": "**Node name:**\n{}\n**Exit code:**\n{}".format(platform.node(), code),
+            "content": "** Commit Hash:**\n{}".format(COMMIT_HASH),
             "tag": "lark_md"
           }
-        },
-        {
-          "is_short": True,
-          "text": {
-            "content": "**Time cost:**\n{}".format('\n'.join(lastlog('time')).strip()),
-            "tag": "lark_md"
-          }
-        },
+        }
       ],
       "tag": "div"
-    },
-    {
-      "tag": "note",
-      "elements": [
-        {
-          "tag": "plain_text",
-          "content": "Full log saved at {}".format(logdir)
-        }
-      ]
     }
   ]
 }
-
-def addlog(obj, name, nlines=20):
-  obj['elements'].extend([
-    {
-      "tag": "hr"
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**📋 Last {} line from {}:**".format(nlines, name)
-      }
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "plain_text",
-        "content": '\n'.join(lastlog(name, nlines=nlines)),
-      }
-    }
-  ])
-
-if usetty == 0:
-  addlog(obj, 'stdout')
-  addlog(obj, 'stderr')
-else:
-  addlog(obj, 'output')
 
 print(json.dumps({
   'msg_type': 'interactive',
