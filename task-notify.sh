@@ -174,7 +174,7 @@ obj = {
   "header": {
     "template": status_color,
     "title": {
-      "content": "{}: Command exited with code {}".format(status, code),
+      "content": "{}: A new PR was merged into {}".format(status, REPO_NAME),
       "tag": "plain_text"
     }
   },
@@ -191,28 +191,28 @@ obj = {
         {
           "is_short": False,
           "text": {
-            "content": "** PR Link:**\n{}".format(PR_LINK),
+            "content": "** PR Link:**\n {}".format(PR_LINK),
             "tag": "lark_md"
           }
         },
         {
           "is_short": False,
           "text": {
-            "content": "** Repo Name:**\n{}".format(REPO_NAME),
+            "content": "** Repo Name:**\n {}".format(REPO_NAME),
             "tag": "lark_md"
           }
         },
         {
           "is_short": False,
           "text": {
-            "content": "** Commit Log:**\n{}".format(COMMIT_LOG),
+            "content": "** Commit Log:**\n {}".format(COMMIT_LOG),
             "tag": "lark_md"
           }
         },
         {
           "is_short": False,
           "text": {
-            "content": "** Commit Hash:**\n{}".format(COMMIT_HASH),
+            "content": "** Commit Hash:**\n {}".format(COMMIT_HASH),
             "tag": "lark_md"
           }
         }
